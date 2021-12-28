@@ -1,4 +1,4 @@
-export interface BmobPromise<T = any> extends Promise<BmobPromise<T>> {
+export interface BmobPromise<T = any> extends Promise<T> {
 }
 
 export interface queryData {
@@ -40,7 +40,7 @@ export class Query {
 
 export class User extends Query {
   new(): void;
-  login: (username: string, password: string) => BmobPromise;
+  login: <T>(username: string, password: string) => BmobPromise<T>;
   register: (params: object) => BmobPromise;
   signOrLoginByMobilePhone: (phone: number, smsCode: number) => BmobPromise;
   logout: () => void;
@@ -127,4 +127,4 @@ export interface Bmob {
 
 declare const Bmob: Bmob;
 
-export default Bmob
+export default Bmob;
