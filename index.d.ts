@@ -10,7 +10,7 @@ export class Query {
   get: (objectId: string) => BmobPromise;
   set: (filedName: string, filedValue: string) => BmobPromise;
   destroy: (objectId: string) => BmobPromise;
-  save: (parmas?: object) => BmobPromise;
+  save: (params?: object) => BmobPromise;
   find: () => BmobPromise;
   current: () => BmobPromise;
   add: (key: string, val: string[]) => void;
@@ -56,12 +56,12 @@ export class User extends Query {
 }
 
 export interface operation {
-  (parmas: string, op: string): object
+  (params: string, op: string): object
 }
 
 export class Relation {
   new(tableName: string): void;
-  add: (parmas: string) => operation
+  add: (params: string) => operation
 }
 
 export class Pointer {
@@ -70,7 +70,7 @@ export class Pointer {
 }
 
 export interface functions {
-  (funName: string, parmas?: object): BmobPromise
+  (funName: string, params?: object): BmobPromise
 }
 
 export class Pay {
@@ -103,25 +103,25 @@ export interface Bmob {
   User: User;
   Query: (params: string) => Query;
   push: (params: object) => BmobPromise;
-  Pointer: (parmas: string) => Pointer;
-  Relation: (parmas: string) => Relation;
+  Pointer: (params: string) => Pointer;
+  Relation: (params: string) => Relation;
   requestPasswordReset: (email: object) => BmobPromise;
   resetPasswordBySmsCode: (smsCode: string, params: object) => BmobPromise;
   updateUserPassword: (objectId: string, params: object) => BmobPromise;
   timestamp: () => BmobPromise;
   generateCode: (params: object) => BmobPromise;
   getAccessToken: () => BmobPromise;
-  sendWeAppMessage: (parmas: object) => BmobPromise;
-  refund: (parmas: object) => BmobPromise;
-  notifyMsg: (parmas: object) => BmobPromise;
-  checkMsg: (parmas: string) => BmobPromise;
+  sendWeAppMessage: (params: object) => BmobPromise;
+  refund: (params: object) => BmobPromise;
+  notifyMsg: (params: object) => BmobPromise;
+  checkMsg: (params: string) => BmobPromise;
   functions: functions;
   run: functions;
   pay: Pay;
   Socket: (id: string) => Socket;
-  geoPoint: (parmas: object) => object;
-  requestSmsCode: (parmas: object, options?: any) => BmobPromise;
-  verifySmsCode: (smscode: string, parmas: object, options?: any) => BmobPromise;
+  geoPoint: (params: object) => object;
+  requestSmsCode: (params: object, options?: any) => BmobPromise;
+  verifySmsCode: (smscode: string, params: object, options?: any) => BmobPromise;
   File: (name: string, object: any) => File
 }
 
